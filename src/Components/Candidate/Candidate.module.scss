@@ -1,0 +1,58 @@
+@import '../../variables.scss';
+
+.candidate{
+    @include flex();
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    &:nth-last-child(1){
+        margin-bottom: 0;
+    }
+}
+
+.candidateHeader{
+    @include flex(center, space-between);
+    width: 100%;
+    margin-bottom: 5px;
+}
+.candidateName{
+    text-align: start;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+.candidateButton{
+    cursor: pointer;
+}
+.candidateComment{
+    font-size: 14px;
+    width: 100%;
+    text-align: start;
+    margin-bottom: 10px;
+}
+.candidateNoComment{
+    font-size: 14px;
+    width: 100%;
+    color: #aaa;
+    text-align: start;
+    margin-bottom: 10px;
+}
+
+.candidateDelete{
+    font-size: 13px;
+    border: none;
+    color: $rojo;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+}
+.candidateEdit{
+    font-size: 13px;
+    border: none;
+    padding: 0;
+    margin-right: 10px;
+    color: #2b2b2b;
+    background: none;
+    cursor: pointer;
+}

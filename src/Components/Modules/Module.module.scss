@@ -1,0 +1,132 @@
+@import '../../variables.scss';
+
+.popup{
+    @include flex(center, center);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: .8);
+    z-index: 999;
+}
+
+.popupBody{
+    @include flex();
+    background-color: #fff;
+    width: 500px;
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.popupHeader{
+    @include flex(center, space-between);
+    width: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    h1{
+        font-size: 18px;
+    }
+    button{
+        @include flex(center, center);
+        width: 25px;
+        height: 23px;
+        border: none;
+        color: #fff;
+        background-color: $rojo;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 12px;
+        &:hover{
+            background-color: darken($rojo, 10)
+        }
+        &:focus{
+            background-color: darken($rojo, 10)
+        }
+        &:active{
+            background-color: darken($rojo, 20)
+        }
+    }
+}
+
+.popUpCuerpo{
+    @include flex(flex-start, flex-end);
+    width: 100%;
+}
+
+.popUpLabel{
+    width: 100%;
+    text-align: start;
+    margin-bottom: 2px;
+    font-size: 14px;
+    padding-left: 2px;
+}
+.popUpInput{
+    width: 100%;
+    height: 35px;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+}
+.popUpError{
+    width: 100%;
+    background-color: $rojo;
+    padding: 5px;
+    font-size: 13px;
+    color: #fff;
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+
+.popUpButton{
+    @include flex(center, center);
+    height: 37px;
+    border: none;
+    color: #fff;
+    background-color: $backgroundColor;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0 15px;
+    font-size: 13px;
+    &:hover{
+        background-color: darken($backgroundColor, 10)
+    }
+    &:focus{
+        background-color: darken($backgroundColor, 10)
+    }
+    &:active{
+        background-color: darken($backgroundColor, 20)
+    }
+}
+
+.popUpButtonRed{
+    @include flex(center, center);
+    height: 37px;
+    border: none;
+    color: #fff;
+    background-color: $rojo;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0 15px;
+    font-size: 13px;
+    &:hover{
+        background-color: darken($rojo, 10)
+    }
+    &:focus{
+        background-color: darken($rojo, 10)
+    }
+    &:active{
+        background-color: darken($rojo, 20)
+    }   
+}
+
+.popUpP{
+    width: 100%;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    b{
+        text-transform: capitalize;
+    }
+}

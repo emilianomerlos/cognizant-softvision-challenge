@@ -1,0 +1,12 @@
+$baseColor: #F28322;
+$rojo: #d63737;
+$backgroundColor: #5590ff;
+
+@mixin flex($vertical: flex-start, $horizontal: flex-start){
+	position: relative;
+	display: flex;
+	justify-content: $horizontal;
+	align-items: $vertical;
+	align-content: $vertical;
+	flex-wrap: wrap;
+}

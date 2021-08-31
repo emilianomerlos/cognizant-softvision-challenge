@@ -1,14 +1,51 @@
-import React from "react";
+import React, {useEffect, useContext, useState} from "react";
 
-import logo from "../assets/logo.png";
+import {CandidatesContext} from "../Contexts/candidates";
+import Column from "../Components/Column/Column";
+import AddModule from "../Components/Modules/AddModule";
+import api from "../api";
+import {Candidate} from "../types/candidate";
 
 import styles from "./App.module.scss";
 
 function App() {
+  const {candidates, setCandidates} = useContext(CandidatesContext);
+
+  const [showAdd, setShowAdd] = useState<Boolean>(false);
+
+  const toogleAdd = () => {
+    setShowAdd(!showAdd);
+  };
+
+  useEffect(() => {
+    api.candidates.list().then((candidatitos) => {
+      setCandidates(candidatitos);
+    });
+  }, []);
+
+  const etapas: string[] = [
+    "Entrevista inicial",
+    "Entrevista técnica",
+    "Oferta",
+    "Asignación",
+    "Rechazo",
+  ];
+
   return (
-    <main>
-      <img alt="Softvision" src={logo} width={320} />
-      <h1 className={styles.title}>Lets get this party started</h1>
+    <main className={styles.main}>
+      {showAdd ? <AddModule toogleAdd={toogleAdd} /> : null}
+      {etapas.map((etapa, i) => {
+        return (
+          <Column
+            key={i}
+            candidates={candidates.filter(
+              (c: Candidate) => c.step.toLowerCase() === etapa.toLowerCase(),
+            )}
+            title={etapa}
+            toogleAdd={toogleAdd}
+          />
+        );
+      })}
     </main>
   );
 }

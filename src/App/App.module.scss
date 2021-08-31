@@ -1,4 +1,9 @@
-.title {
-  font-size: 24px;
-  font-weight: normal;
+@import '../variables.scss';
+
+.main{
+  @include flex(flex-start, space-between);
+  width: 100%;
+  min-height: 100vh;
+  padding: 10px;
+  background-color: $backgroundColor;
 }

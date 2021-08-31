@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+
+.col{
+    @include flex();
+    width: 19%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #e2e2e2;
+    border-radius: 3px;
+}
+
+.colHeader{
+    @include flex();
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.colTitle{
+    text-transform: capitalize;
+    font-size: 20px;
+}
+
+.colEmpty{
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    color: #aaa;
+    margin: 10px 0 15px 0;
+}
+
+.colAdd{
+    width: 100%;
+    padding: 3px 0;
+    cursor: pointer;
+}
