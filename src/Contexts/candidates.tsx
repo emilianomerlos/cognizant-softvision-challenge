@@ -30,10 +30,10 @@ const CandidatesProvider = ({children}: ProviderProps) => {
     let newCandidates = [
       ...candidates,
       {
-        name: name.toLowerCase(),
-        comments: comment,
+        name: name.toLowerCase().trim(),
+        comments: comment.trim(),
         step: "Entrevista inicial" as const,
-        id: id,
+        id: id.trim(),
       },
     ];
 

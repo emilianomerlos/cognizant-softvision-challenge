@@ -3,7 +3,7 @@
 .candidate{
     @include flex();
     width: 100%;
-    padding: 10px;
+    //padding: 10px;
     background-color: #fff;
     border-radius: 3px;
     margin-bottom: 10px;
@@ -13,12 +13,15 @@
 }
 
 .candidateHeader{
-    @include flex(center, space-between);
+    @include flex(flex-start, space-between);
     width: 100%;
-    margin-bottom: 5px;
+    padding: 10px 10px 0 10px;
+    margin-bottom: 10px;
 }
 .candidateName{
     text-align: start;
+    margin-top: 3px;
+    max-width: calc( 100% - 50px);
     font-size: 14px;
     text-transform: capitalize;
 }
@@ -29,6 +32,7 @@
     font-size: 14px;
     width: 100%;
     text-align: start;
+    padding: 0 10px;
     margin-bottom: 10px;
 }
 .candidateNoComment{
@@ -36,23 +40,58 @@
     width: 100%;
     color: #aaa;
     text-align: start;
+    padding: 0 10px;
     margin-bottom: 10px;
 }
 
+.candidateOptions{
+    @include flex(center, flex-end);
+    width: 100%;
+    background-color: #f4f4f4;
+    border-radius: 0 0 3px 3px;
+    border-top: 1px solid #b4b4b4;
+    padding: 5px 10px;
+}
+
 .candidateDelete{
-    font-size: 13px;
+    @include flex(center, flex-start);
+    font-size: 12px;
     border: none;
     color: $rojo;
     padding: 0;
     background: none;
     cursor: pointer;
+    svg{
+        width: 17px;
+        height: 17px;
+        margin-right: 3px;
+    }
+    &:hover{
+        color: darken($rojo, 15);
+    }
+    &:focus{
+        color: darken($rojo, 15);
+    }
 }
 .candidateEdit{
-    font-size: 13px;
+    @include flex(center, flex-start);
+    font-size: 12px;
     border: none;
     padding: 0;
     margin-right: 10px;
     color: #2b2b2b;
     background: none;
     cursor: pointer;
+    svg{
+        margin-top: 2px;
+        margin-right: 3px;
+        width: 18px;
+        height: 18px;
+    }
+    &:hover{
+        color: #000;
+    }
+    &:focus{
+        color: #000;
+    }
 }

@@ -1,4 +1,6 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
+import {IoCloseSharp} from "react-icons/io5";
+import {AiOutlineSave} from "react-icons/ai";
 
 import {CandidatesContext} from "../../Contexts/candidates";
 import {Candidate} from "../../types/candidate";
@@ -48,12 +50,19 @@ const EditModule = ({toogleEdit, candidate}: EditModuleProps) => {
     setError("");
   };
 
+  const changeId = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setId(e.target.value.replace(/\s/g, ""));
+    setError("");
+  };
+
   return (
     <div className={styles.popup}>
       <div className={styles.popupBody}>
         <header className={styles.popupHeader}>
           <h1>Editar candidato</h1>
-          <button onClick={toogleEdit}>X</button>
+          <button onClick={toogleEdit}>
+            <IoCloseSharp />
+          </button>
         </header>
         <section className={styles.popUpCuerpo}>
           <label className={styles.popUpLabel} htmlFor="name">
@@ -77,7 +86,7 @@ const EditModule = ({toogleEdit, candidate}: EditModuleProps) => {
             placeholder="id"
             type="text"
             value={id}
-            onChange={(e) => setId(e.target.value)}
+            onChange={changeId}
           />
           <label className={styles.popUpLabel} htmlFor="comment">
             Comentario:
@@ -93,6 +102,7 @@ const EditModule = ({toogleEdit, candidate}: EditModuleProps) => {
           {error.trim() !== "" ? <p className={styles.popUpError}>{error}</p> : null}
 
           <button className={styles.popUpButton} onClick={editarCandidato}>
+            <AiOutlineSave />
             Guardar
           </button>
         </section>

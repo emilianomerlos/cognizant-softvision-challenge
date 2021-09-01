@@ -88,8 +88,14 @@
     background-color: $backgroundColor;
     cursor: pointer;
     border-radius: 4px;
-    padding: 0 15px;
+    padding: 0 10px;
     font-size: 13px;
+    svg{
+        margin-right: 5px;
+        margin-top: 0px;
+        width: 17px;
+        height: 17px;
+    }
     &:hover{
         background-color: darken($backgroundColor, 10)
     }
@@ -109,8 +115,14 @@
     background-color: $rojo;
     cursor: pointer;
     border-radius: 4px;
-    padding: 0 15px;
+    padding: 0 10px;
     font-size: 13px;
+    svg{
+        margin-right: 5px;
+        margin-top: -2px;
+        width: 17px;
+        height: 17px;
+    }
     &:hover{
         background-color: darken($rojo, 10)
     }
@@ -124,6 +136,7 @@
 
 .popUpP{
     width: 100%;
+    text-align: start;
     margin-bottom: 25px;
     margin-top: 10px;
     b{

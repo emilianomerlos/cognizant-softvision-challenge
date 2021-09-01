@@ -1,4 +1,5 @@
 import React, {useContext, useState} from "react";
+import {AiOutlineDelete, AiOutlineEdit} from "react-icons/ai";
 
 import {CandidatesContext} from "../../Contexts/candidates";
 import {Candidate} from "../../types/candidate";
@@ -43,12 +44,16 @@ const CandidateCard = ({candidate}: CandidateProps) => {
       <p className={candidate.comments ? styles.candidateComment : styles.candidateNoComment}>
         {candidate.comments || "Sin comentario"}
       </p>
-      <button className={styles.candidateEdit} onClick={toogleEdit}>
-        Editar
-      </button>
-      <button className={styles.candidateDelete} onClick={toogleDelete}>
-        Eliminar
-      </button>
+      <section className={styles.candidateOptions}>
+        <button className={styles.candidateEdit} onClick={toogleEdit}>
+          <AiOutlineEdit />
+          Editar
+        </button>
+        <button className={styles.candidateDelete} onClick={toogleDelete}>
+          <AiOutlineDelete />
+          Borrar
+        </button>
+      </section>
     </article>
   );
 };

@@ -1,6 +1,9 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
+import {IoCloseSharp} from "react-icons/io5";
+import {AiOutlineUserAdd} from "react-icons/ai";
 
 import {CandidatesContext} from "../../Contexts/candidates";
+import {Candidate} from "../../types/candidate";
 
 import styles from "./Module.module.scss";
 
@@ -9,7 +12,7 @@ type AddModuleProps = {
 };
 
 const AddModule = ({toogleAdd}: AddModuleProps) => {
-  const {add} = useContext(CandidatesContext);
+  const {add, candidates} = useContext(CandidatesContext);
   const nameInputRef = useRef<HTMLInputElement>(null);
 
   const [name, setName] = useState<string>("");
@@ -29,8 +32,14 @@ const AddModule = ({toogleAdd}: AddModuleProps) => {
     } else if (id.trim() === "") {
       setError("Debe ingresar un ID");
     } else {
-      add(id, name, comment);
-      toogleAdd();
+      const existID: boolean = candidates.some((c: Candidate) => c.id === id.trim());
+
+      if (existID) {
+        setError("Ya existe un candidato con esa ID");
+      } else {
+        add(id, name, comment);
+        toogleAdd();
+      }
     }
   };
 
@@ -38,7 +47,12 @@ const AddModule = ({toogleAdd}: AddModuleProps) => {
     setName(e.target.value);
     let id = e.target.value.toLowerCase().replace(/\s/g, "");
 
-    setId(id);
+    setId(id.trim());
+    setError("");
+  };
+
+  const changeId = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setId(e.target.value.replace(/\s/g, ""));
     setError("");
   };
 
@@ -47,7 +61,9 @@ const AddModule = ({toogleAdd}: AddModuleProps) => {
       <div className={styles.popupBody}>
         <header className={styles.popupHeader}>
           <h1>Nuevo candidato</h1>
-          <button onClick={toogleAdd}>X</button>
+          <button onClick={toogleAdd}>
+            <IoCloseSharp />
+          </button>
         </header>
         <section className={styles.popUpCuerpo}>
           <label className={styles.popUpLabel} htmlFor="name">
@@ -71,7 +87,7 @@ const AddModule = ({toogleAdd}: AddModuleProps) => {
             placeholder="id"
             type="text"
             value={id}
-            onChange={(e) => setId(e.target.value)}
+            onChange={changeId}
           />
           <label className={styles.popUpLabel} htmlFor="comment">
             Comentario:
@@ -87,6 +103,7 @@ const AddModule = ({toogleAdd}: AddModuleProps) => {
           {error.trim() !== "" ? <p className={styles.popUpError}>{error}</p> : null}
 
           <button className={styles.popUpButton} onClick={agregarCandidato}>
+            <AiOutlineUserAdd />
             Agregar
           </button>
         </section>
