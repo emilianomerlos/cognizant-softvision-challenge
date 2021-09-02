@@ -14,7 +14,9 @@
 .popupBody{
     @include flex();
     background-color: #fff;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 20px;
     padding: 20px;
     border-radius: 7px;
 }
